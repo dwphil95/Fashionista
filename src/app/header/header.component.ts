@@ -1,3 +1,4 @@
+import { UserService } from './../services/user.service';
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from './../auth/auth.service';
 import { Router } from '@angular/router';
@@ -9,7 +10,10 @@ import { Router } from '@angular/router';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor(public auth: AuthService, private router: Router) { }
+  username: String
+  role: String
+
+  constructor(public auth: AuthService, private user: UserService, private router: Router) { }
 
   ngOnInit(): void {
   }

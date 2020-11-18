@@ -1,0 +1,15 @@
+ <div class="text-center">  
+    <h2 class>Edit Fashion Item</h2><br>
+    <h6>Item ID: {{itemId}}</h6><br>
+    <div class="container">
+        <form [formGroup]="editForm" (ngSubmit)="update()">
+            <label for="fname">Item Name:</label>
+            <input type="text" formControlName="fname"/><br>
+            <p>{{nameRequiredError}}</p><br>
+            <label for="price">Item Price:</label>
+            <input type="number" formControlName="price"/><br>
+            <p>{{priceRequiredError}}</p><br>
+            <button type="submit" class="btn btn-warning">Update Item</button>
+        </form>
+    </div>
+</div>

@@ -1,3 +1,9 @@
 .pointer {
   cursor: pointer;
 }
+
+.header-title {
+  font-family: 'Allan';
+  font-size: 33px;
+  padding-right: 10px;
+}

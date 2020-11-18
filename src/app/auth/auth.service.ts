@@ -1,3 +1,4 @@
+import { UserService } from './../services/user.service';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
@@ -19,9 +20,11 @@ export class AuthService {
 
   private uriseg = 'http://localhost:5000/api/users';
   private decodedToken;
+  role: string
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private user: UserService) {
     this.decodedToken = JSON.parse(localStorage.getItem('auth_meta')) || new DecodedToken();
+    this.role = localStorage.getItem('role') || ""
    }
 
   public register(userData: any): Observable<any> {
@@ -38,6 +41,10 @@ export class AuthService {
 
   private saveToken(token: any): any {
     this.decodedToken = jwt.decodeToken(token);
+    this.user.getUserByUsername(this.decodedToken.username).subscribe(result => {
+      this.role = (result["admin"]) ? "Admin" : "User"
+      localStorage.setItem('role', this.role)
+    })
     localStorage.setItem('auth_tkn', token);
     localStorage.setItem('auth_meta', JSON.stringify(this.decodedToken));
     return token;
@@ -46,6 +53,10 @@ export class AuthService {
   public logout(): void {
     localStorage.removeItem('auth_tkn');
     localStorage.removeItem('auth_meta');
+    localStorage.removeItem('role')
+    
+    if (localStorage.getItem('cart'))
+      localStorage.removeItem('cart')
 
     this.decodedToken = new DecodedToken();
   }
@@ -57,4 +68,5 @@ export class AuthService {
   public getUsername(): string {
     return this.decodedToken.username;
   }
+
 }

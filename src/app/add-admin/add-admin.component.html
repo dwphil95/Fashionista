@@ -1,0 +1,37 @@
+<h3 class="text-center">Current Admins</h3>
+<div class="container">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>S.No.</th>
+                <th>Username</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let user of users, let i=index">
+                <td *ngIf="user.admin==true">{{i+1}}</td>
+                <td *ngIf="user.admin==true">{{user.username}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div><br>
+
+<h3 class='text-center'>Users</h3>
+<div class="container">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>S.No.</th>
+                <th>Username</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let user of users, let j=index">
+                <td *ngIf="user.admin==false">{{j+1}}</td>
+                <td *ngIf="user.admin==false">{{user.username}}</td>
+                <button class="btn btn-info" *ngIf="user.admin == false" (click)="makeAdmin(user)">Make Admin</button>
+            </tr>
+        </tbody>
+    </table>
+</div>

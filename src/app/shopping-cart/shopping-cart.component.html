@@ -1,0 +1,28 @@
+<div class="container text-center">
+    <h2>Shopping Cart</h2><br>
+    <div *ngIf="cart">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Item Name</th>
+                    <th>Quantity</th>
+                    <th>Item Price</th>
+                    <th>Update Quantity</th>
+                    <th>Delete Cart Item</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of cart">
+                    <td>{{item.fashionItem.fname}}</td>
+                    <td><input type="number" id="cartQuantity" min="0" max="100" value="{{item.quantity}}"></td>
+                    <td>${{item.fashionItem.price}}</td>
+                    <td><button class="btn btn-info" (click)="updateItemQuantity(item.fashionItem)">Update</button></td>
+                    <td><button class="btn btn-danger" (click)="deleteItem(item.fashionItem)">Delete</button></td>
+                </tr>
+            </tbody>
+        </table><br>
+        <p>Total: ${{total}}</p><br>
+        <button class="btn btn-primary" id="checkout-button" [disabled]="cart.length==0" (click)="checkout()">Checkout</button>
+    </div>
+    <p>{{emptyMessage}}</p>
+</div>

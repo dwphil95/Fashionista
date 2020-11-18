@@ -25,7 +25,7 @@ export class LoginComponent implements OnInit {
         this.notify = 'You have been successfully registered. Please Log in';
       }
       if (params[key2] === 'success') {
-        this.notify = 'You have been loggedout successfully';
+        this.notify = 'You have been logged out successfully';
       }
     });
   }

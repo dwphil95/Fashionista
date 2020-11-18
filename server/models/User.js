@@ -27,11 +27,13 @@ const userSchema = new Schema({
     type: String,
     min: [4, 'Too short, min 4 characters are required'],
     max: [32, 'Too long, max 16 characters are required']
-  }
+  },
+  admin: Boolean
 });
 
 userSchema.pre('save', function (next) {
   const user = this
+  user.admin = false
   bcrypt.genSalt(10, function (err, salt) {
     if (err) {
       return res.status(422).json({

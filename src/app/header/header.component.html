@@ -1,6 +1,8 @@
 <nav class="navbar navbar-light navbar-expand-lg" style="background-color: #e3f2fd;">
   <div class="container">
-    <a routerLink="/" class="navbar-brand" routerLinkActive="active">Admin Portal</a>
+    <a class="navbar-brand header-title">Fashionista</a>
+    <a routerLink="/" class="navbar-brand" *ngIf="auth.role=='Admin'&&auth.isAuthenticated()" routerLinkActive="active">Admin Portal</a>
+    <a routerLink="/" class="navbar-brand" *ngIf="auth.role=='User'&&auth.isAuthenticated()" routerLinkActive="active">User Portal</a>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav ml-auto">
         <ng-container *ngIf="!auth.isAuthenticated()">
@@ -17,7 +19,23 @@
         </ng-container>
         <ng-container *ngIf="auth.isAuthenticated()">
           <li class="nav-item">
-            <a class="nav-link">
+            <a class="nav-link" *ngIf="auth.role=='Admin'" [routerLink]="['/manage-items']">
+              Manage Items
+            </a>
+            <a class="nav-link" *ngIf="auth.role=='User'" [routerLink]="['/store']">
+              Store
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" *ngIf="auth.role=='Admin'" [routerLink]="['/add-admin']">
+              Add Admin
+            </a>
+            <a class="nav-link" *ngIf="auth.role=='User'" [routerLink]="['/shopping-cart']">
+              Shopping Cart
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" [routerLink]="['/profile']">
               {{ auth.getUsername() }}
             </a>
           </li>

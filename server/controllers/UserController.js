@@ -99,6 +99,39 @@ exports.authMiddleware = function (req, res, next) {
   }
 }
 
+var UserModel = require("../models/User")
+
+exports.GetUsers = function (req, res) {
+  UserModel.find({}, (err, data) => {
+    if (err) throw err
+    res.json(data)
+  })
+}
+
+exports.GetUserByUsername = function (req, res) {
+  var userName = req.params.username
+  UserModel.findOne({username: userName}, (err, data) => {
+    if (err) throw err
+    console.log(data)
+    res.json(data)
+  })
+}
+
+exports.MakeAdmin = function (req, res) {
+  var userName = req.body.username
+  var userEmail = req.body.email
+  var userPswd = req.body.password
+  var adminStatus = true
+
+  UserModel.updateOne({username: userName}, {$set:{username:userName, email:userEmail, password: userPswd, admin:adminStatus}}, (err, result) => {
+    if (err) throw err
+    if (result.nModified > 0)
+        res.json({"msg": "Admin status updated successfully"})
+    else
+        res.json({"msg": "Admin status didn't update"})
+  })
+}
+
 function parseToken(token) {
   return jwt.verify(token.split(' ')[1], env.secret)
 }

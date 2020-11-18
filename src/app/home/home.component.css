@@ -1,3 +1,60 @@
+html, body {
+  height: 100%;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif
+}
+
 .marge {
-  margin-top: 1%
+  margin-top: 1%;
+}
+
+.intro {
+  background-color: rgb(228, 211, 175);
+  max-width: 700px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.card {
+  margin-top: 3%;
+  border: solid 0.5px;
+}
+
+.bottom-half {
+  background-color: rgb(233, 195, 188);
+}
+
+.image-text1 {
+  background-color: white;
+  padding: 5px;
+}
+
+.image-text2 {
+  background-color: white;
+  padding: 5px;
+  padding-bottom: 20px;
+}
+
+.women {
+  background-image: url("https://4.bp.blogspot.com/-A32qvFQx0r4/U3fC7yIe1NI/AAAAAAAACzY/Oe977xFSv3Q/s1600/women+clothing+models+%25282%2529.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+.kids {
+  background-image: url("https://sc02.alicdn.com/kf/HTB1YNJNMXXXXXbOXXXXq6xXFXXXV/-font-b-Kids-b-font-font-b-boys-b-font-summer-models-new-Korean-T.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+.mainBody {
+  background-image: url("https://www.ncsl.org/portals/1/ImageLibrary_New/Human_Services/happyFamily-857096286_1x.jpg");
+  background-position: center;
+  max-width: 85%;
+  margin-top: 1%;
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 300px;
+  padding-bottom: 30px;
 }

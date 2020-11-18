@@ -1,4 +1,34 @@
-<div *ngIf="notify" class="alert alert-success container marge">
-    {{ notify }}
-</div>
-<p class="container">home page!</p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div *ngIf="notify" class="alert alert-success container marge">
+        {{ notify }}
+    </div>
+    <div class="mainBody text-center">
+        <div class="container intro">
+            <h2>Welcome, <i>{{username}}</i>!</h2><br>
+            <h5>Here at <i>Fashionista</i>, we strive to provide the highest quality fits for everyone year round! 
+                No matter what occasion, event, weather, or season it is, we got it all!</h5>
+        </div><br>
+        <div class="container card bottom-half">
+            <div class="card-deck mb-3 text-center">
+              <div class="card mb-4 shadow-sm men">
+                <p class="image-text1">Dress in these stylish men's clothes with swag!</p>
+                <img src="https://i.pinimg.com/originals/93/09/8d/93098d0747fb2d62bd37900ef896d3cf.jpg">
+              </div>
+              <div class="card mb-4 shadow-sm women">
+                <p class="image-text2">Beautiful and hot is what we got for the women!</p>
+              </div>
+              <div class="card mb-4 shadow-sm kids">
+                <p class="image-text2">Leave some of the pretty for the children as well!</p>
+              </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

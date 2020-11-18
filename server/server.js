@@ -18,6 +18,8 @@ mongoose.connect(config.DB).then(
   err => { console.log('Can not connect to the database' + err) }
 );
 
+mongoose.connection;
+
 const app = express();
 
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -30,6 +32,12 @@ let corsOptions = {
 
 app.use(cors(corsOptions))
 app.use('/api/users', userRoute);
+
+var FashionItem = require("./routes/FashionItemRoute.js");
+app.use("/fashionItem",FashionItem);
+
+var Sale = require("./routes/SaleRoute.js")
+app.use("/sale", Sale)
 
 app.listen(PORT, () => {
   console.log(`Server is running on PORT ${PORT}`);

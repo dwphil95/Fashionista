@@ -12,4 +12,8 @@ router.get('/profile', authMiddleware, function (req, res) {
   res.json({ 'access': true })
 })
 
+router.get('/allUsers', user.GetUsers)
+router.get('/userByUsername/:username', user.GetUserByUsername)
+router.put('/makeAdmin', user.MakeAdmin)
+
 module.exports = router

@@ -1,0 +1,17 @@
+<div class="text-center">  
+    <h2 class>Add Fashion Item</h2><br>
+    <div class="container">
+        <form [formGroup]="addForm" (ngSubmit)="addItem()">
+            <label for="id">ID:</label>
+            <input type="text" formControlName="id"/><br>
+            <p>{{idError}}</p><br>
+            <label for="fname">Item Name:</label>
+            <input type="text" formControlName="fname"/><br>
+            <p>{{nameRequiredError}}</p><br>
+            <label for="price">Item Price:</label>
+            <input type="number" formControlName="price"/><br>
+            <p>{{priceRequiredError}}</p><br>
+            <button type="submit" class="btn btn-warning">Add Item</button>
+        </form>
+    </div>
+</div>

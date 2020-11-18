@@ -1,0 +1,24 @@
+<div class="container text-center">
+    <h2>Manage Fashion Items</h2><br>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Item Name</th>
+                <th>Item Price</th>
+                <th>Edit Item</th>
+                <th>Delete Item</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of fashionItems">
+                <td>{{item._id}}</td>
+                <td>{{item.fname}}</td>
+                <td>${{item.price}}</td>
+                <td><button class="btn btn-info" (click)="editItem(item._id)">Edit</button></td>
+                <td><button class="btn btn-danger" (click)="deleteItem(item._id)">Delete</button></td>
+            </tr>
+        </tbody>
+    </table><br>
+    <button class="btn btn-primary" (click)="addNewItem()">Add a New Item</button>
+</div>
