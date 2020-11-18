@@ -1,8 +1,9 @@
 <div class="container text-center">
-    <h2>Shopping Cart</h2><br>
-    <div *ngIf="cart">
+    <br><h2>Your Cart</h2><hr>
+    <p *ngIf="!cart||cart.length==0">Your shopping cart is curently empty. Browse through our store to buy items.</p>
+    <div *ngIf="cart&&cart.length>0">
         <table class="table table-bordered">
-            <thead>
+            <thead class="thead-dark">
                 <tr>
                     <th>Item Name</th>
                     <th>Quantity</th>
@@ -12,7 +13,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let item of cart">
+                <tr *ngFor="let item of cart" class="table-secondary">
                     <td>{{item.fashionItem.fname}}</td>
                     <td><input type="number" id="cartQuantity" min="0" max="100" value="{{item.quantity}}"></td>
                     <td>${{item.fashionItem.price}}</td>
@@ -21,8 +22,7 @@
                 </tr>
             </tbody>
         </table><br>
-        <p>Total: ${{total}}</p><br>
+        <h5>Total: ${{total}}</h5><br>
         <button class="btn btn-primary" id="checkout-button" [disabled]="cart.length==0" (click)="checkout()">Checkout</button>
     </div>
-    <p>{{emptyMessage}}</p>
 </div>

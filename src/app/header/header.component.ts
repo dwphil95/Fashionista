@@ -1,3 +1,5 @@
+import { DataSharingService } from './../services/data.service';
+import { CartItem } from './../models/cartItem';
 import { UserService } from './../services/user.service';
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from './../auth/auth.service';
@@ -12,8 +14,13 @@ export class HeaderComponent implements OnInit {
 
   username: String
   role: String
+  cartSize: Number
 
-  constructor(public auth: AuthService, private user: UserService, private router: Router) { }
+  constructor(public auth: AuthService, private user: UserService, private router: Router, private dataSharingService: DataSharingService) { 
+    this.dataSharingService.cartSize.subscribe( value => {
+      this.cartSize = value;
+    });
+  }
 
   ngOnInit(): void {
   }

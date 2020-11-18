@@ -1,3 +1,4 @@
+import { DataSharingService } from './../services/data.service';
 import { AuthService } from './../auth/auth.service';
 import { Sale } from './../models/sale';
 import { SaleService } from './../services/sale.service';
@@ -15,8 +16,7 @@ export class ShoppingCartComponent implements OnInit {
 
   total: Number
   cart: CartItem[]
-  emptyMessage: String = ""
-  constructor(private router: Router, private saleService: SaleService, private auth: AuthService) { 
+  constructor(private router: Router, private saleService: SaleService, private auth: AuthService, private dataSharingService: DataSharingService) { 
     this.router.routeReuseStrategy.shouldReuseRoute = () => {
       return false;
     };
@@ -27,8 +27,6 @@ export class ShoppingCartComponent implements OnInit {
       this.cart = JSON.parse(localStorage.getItem('cart'));
       this.total = this.calculateTotal()
     }
-    else
-      this.emptyMessage = "Your shopping cart is currently empty."
   }
 
   calculateTotal() {
@@ -64,6 +62,7 @@ export class ShoppingCartComponent implements OnInit {
       }
     }
     localStorage.setItem('cart', JSON.stringify(this.cart));
+    alert("Quantity updated!")
     this.router.navigateByUrl('/shopping-cart');
   }
 
@@ -75,6 +74,7 @@ export class ShoppingCartComponent implements OnInit {
       }
     }
     localStorage.setItem('cart', JSON.stringify(this.cart));
+    this.dataSharingService.cartSize.next(this.cart.length)
     this.router.navigateByUrl('/shopping-cart');
   }
 

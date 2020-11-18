@@ -1,3 +1,4 @@
+import { DataSharingService } from './services/data.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -41,7 +42,7 @@ import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
     FormsModule,
     ReactiveFormsModule
   ],
-  providers: [],
+  providers: [DataSharingService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,3 +1,4 @@
+import { DataSharingService } from './../../services/data.service';
 import { CartItem } from './../../models/cartItem';
 import { FashionItem } from './../../models/fashionItem';
 import { ItemService } from './../../services/item.service';
@@ -14,7 +15,7 @@ export class ItemDetailsComponent implements OnInit {
   id: Number
   item: FashionItem
 
-  constructor(private route: ActivatedRoute, private itemService: ItemService) { 
+  constructor(private route: ActivatedRoute, private itemService: ItemService, private dataSharingService: DataSharingService) { 
     this.id = Number(this.route.snapshot.paramMap.get('id'));
   }
 
@@ -48,6 +49,7 @@ export class ItemDetailsComponent implements OnInit {
         cart[index] = cartItem;
       }
       localStorage.setItem('cart', JSON.stringify(cart));
+      this.dataSharingService.cartSize.next(cart.length)
     }
     else {
         var cart: any = []
@@ -57,6 +59,7 @@ export class ItemDetailsComponent implements OnInit {
         }
         cart.push(cartItem)
         localStorage.setItem("cart", JSON.stringify(cart))
+        this.dataSharingService.cartSize.next(cart.length)
     }
     alert("Added item to cart successfully!")
   } 
