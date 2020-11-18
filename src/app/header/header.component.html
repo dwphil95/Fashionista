@@ -31,7 +31,7 @@
               Add Admin
             </a>
             <a class="nav-link" *ngIf="auth.role=='User'" [routerLink]="['/shopping-cart']">
-              Shopping Cart
+              Shopping Cart <span *ngIf="cartSize>0" class="badge badge-dark">{{cartSize}}</span>
             </a>
           </li>
           <li class="nav-item">

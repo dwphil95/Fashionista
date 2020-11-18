@@ -1,3 +1,4 @@
+import { DataSharingService } from './../services/data.service';
 import { fadeInAnimation } from './../_animations/index';
 import { CartItem } from './../models/cartItem';
 import { Router } from '@angular/router';
@@ -19,7 +20,7 @@ import { Component, OnInit } from '@angular/core';
 export class StoreComponent implements OnInit {
 
   fashionItems: FashionItem[]
-  constructor(private itemService: ItemService, private router: Router) { }
+  constructor(private itemService: ItemService, private router: Router, private dataSharingService: DataSharingService) { }
 
   ngOnInit(): void {
     this.itemService.getFashionItems().subscribe(result => {
@@ -55,6 +56,7 @@ export class StoreComponent implements OnInit {
         cart[index] = cartItem;
       }
       localStorage.setItem('cart', JSON.stringify(cart));
+      this.dataSharingService.cartSize.next(cart.length)
     }
     else {
         var cart: any = []
@@ -64,6 +66,7 @@ export class StoreComponent implements OnInit {
         }
         cart.push(cartItem)
         localStorage.setItem("cart", JSON.stringify(cart))
+        this.dataSharingService.cartSize.next(cart.length)
     }
     alert("Added item to cart successfully!")
   }  

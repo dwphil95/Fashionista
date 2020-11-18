@@ -1,7 +1,8 @@
+<br><h2 class="text-center">Manage Fashion Items</h2><hr>
 <div class="container text-center">
-    <h2>Manage Fashion Items</h2><br>
-    <table class="table table-striped">
-        <thead>
+    <h6>As an admin, you have been given privileges for adding, editing, and deleting store items.</h6><br>
+    <table *ngIf="fashionItems&&fashionItems.length>0" class="table table-striped">
+        <thead class="table-success">
             <tr>
                 <th>ID</th>
                 <th>Item Name</th>

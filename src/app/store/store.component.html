@@ -1,23 +1,27 @@
 <div class="container text-center">
-    <h2>Online Store</h2><br>
-    <table class="table table-striped">
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>Item Name</th>
-                <th>Item Price</th>
-                <th>Item Details</th>
-                <th>Add to Cart</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr *ngFor="let item of fashionItems">
-                <td>{{item._id}}</td>
-                <td>{{item.fname}}</td>
-                <td>${{item.price}}</td>
-                <td><button class="btn btn-secondary" (click)="itemDetails(item._id)">Details</button></td>
-                <td><button class="btn btn-info" (click)="addToCart(item)">Add to Shopping Cart</button></td>
-            </tr>
-        </tbody>
-    </table>
+    <br><h2>Online Store</h2><hr>
+    <p *ngIf="!fashionItems||fashionItems.length==0">The store is currently empty. Make sure an admin updates the store by adding new items.</p>
+    <div *ngIf="fashionItems&&fashionItems.length>0" >
+        <h5>Browse through our wonderful list of items in stock! Great deals 24/7!</h5><br>
+        <table class="table table-striped">
+            <thead class="table-success">
+                <tr>
+                    <th>ID</th>
+                    <th>Item Name</th>
+                    <th>Item Price</th>
+                    <th>Item Details</th>
+                    <th>Add to Cart</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of fashionItems">
+                    <td>{{item._id}}</td>
+                    <td>{{item.fname}}</td>
+                    <td>${{item.price}}</td>
+                    <td><button class="btn btn-secondary" (click)="itemDetails(item._id)">Details</button></td>
+                    <td><button class="btn btn-info" (click)="addToCart(item)">Add to Shopping Cart</button></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>    
 </div>
