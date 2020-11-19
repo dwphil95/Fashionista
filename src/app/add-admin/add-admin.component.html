@@ -1,7 +1,7 @@
 <br><h3 class="text-center">Current Admins</h3>
 <div class="container">
     <table class="table table-striped">
-        <thead>
+        <thead class="table-warning">
             <tr>
                 <th>S.No.</th>
                 <th>Username</th>
@@ -16,10 +16,11 @@
     </table>
 </div><br>
 
+<hr><br>
 <h3 class='text-center'>Users</h3>
 <div class="container">
     <table class="table table-striped">
-        <thead>
+        <thead class="table-info">
             <tr>
                 <th>S.No.</th>
                 <th>Username</th>
@@ -30,7 +31,7 @@
             <tr *ngFor="let user of users, let j=index">
                 <td *ngIf="user.admin==false">{{j+1}}</td>
                 <td *ngIf="user.admin==false">{{user.username}}</td>
-                <button class="btn btn-info" *ngIf="user.admin == false" (click)="makeAdmin(user)">Make Admin</button>
+                <button class="btn btn-sm btn-info" *ngIf="user.admin == false" (click)="makeAdmin(user)">Make Admin</button>
             </tr>
         </tbody>
     </table>

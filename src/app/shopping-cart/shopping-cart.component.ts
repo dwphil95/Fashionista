@@ -56,14 +56,17 @@ export class ShoppingCartComponent implements OnInit {
     for (var i = 0; i < this.cart.length; i++) {
       var cartItem: CartItem = this.cart[i];
       if (cartItem.fashionItem._id == item._id) {
-          var newQuantity = Number((<HTMLInputElement>document.getElementById("cartQuantity")).value)
-          cartItem.quantity = newQuantity
-          break
+          var newQuantity = Number((<HTMLInputElement>document.getElementById("cartQuantity"+String(i))).value)
+          if (newQuantity < 1 || newQuantity > 100)
+            alert("Quantity not updated. Set a quantity from 1 to 100 only.")
+          else {
+            cartItem.quantity = newQuantity
+            localStorage.setItem('cart', JSON.stringify(this.cart));
+            alert("Quantity updated successfullly!")
+            this.router.navigateByUrl('/shopping-cart');
+          }
       }
     }
-    localStorage.setItem('cart', JSON.stringify(this.cart));
-    alert("Quantity updated!")
-    this.router.navigateByUrl('/shopping-cart');
   }
 
   deleteItem(item: FashionItem) {
