@@ -1,5 +1,4 @@
 import { DataSharingService } from './../services/data.service';
-import { fadeInAnimation } from './../_animations/index';
 import { CartItem } from './../models/cartItem';
 import { Router } from '@angular/router';
 import { FashionItem } from './../models/fashionItem';
@@ -10,12 +9,6 @@ import { Component, OnInit } from '@angular/core';
   selector: 'app-store',
   templateUrl: './store.component.html',
   styleUrls: ['./store.component.css'],
-
-  // make fade in animation available to this component
-  animations: [fadeInAnimation],
-
-  // attach the fade in animation to the host (root) element of this component
-  host: { '[@fadeInAnimation]': '' }
 })
 export class StoreComponent implements OnInit {
 
