@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ItemService } from './../../services/item.service';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
+import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 
 @Component({
   selector: 'app-add-item',
@@ -13,8 +14,8 @@ export class AddItemComponent implements OnInit {
 
   addForm: FormGroup;
   idError = ""
-  nameRequiredError = ""
-  priceRequiredError = ""
+  nameError = ""
+  priceError = ""
 
   constructor(private itemService: ItemService, private route: ActivatedRoute, private fb: FormBuilder, private router: Router) { }
 
@@ -31,23 +32,23 @@ export class AddItemComponent implements OnInit {
     var newItemName = this.addForm.controls["fname"].value
     var newItemPrice = this.addForm.controls["price"].value
     if (newItemId && newItemName && newItemPrice) {
-      var newFashionItem = new FashionItem()
-      newFashionItem._id = newItemId
-      newFashionItem.fname = newItemName
-      newFashionItem.price = newItemPrice
-      this.itemService.getFashionItembyId(newItemId).subscribe(result => {
-        if (result["length"] == 0) {
-          this.itemService.storeFashionItem(newFashionItem).subscribe(result => console.log("Item added successfully"))
-          this.router.navigateByUrl('/manage-items');
-        }
-        else
-          this.idError = "ID already exists"
-      })
+        var newFashionItem = new FashionItem()
+        newFashionItem._id = newItemId
+        newFashionItem.fname = newItemName
+        newFashionItem.price = newItemPrice
+        this.itemService.getFashionItembyId(newItemId).subscribe(result => {
+          if (result["length"] == 0) {
+            this.itemService.storeFashionItem(newFashionItem).subscribe(result => console.log("Item added successfully"))
+            this.router.navigateByUrl('/manage-items');
+          }
+          else
+            this.idError = "ID already exists"
+        })  
     }
     else {
       this.idError = (!newItemId) ? "Item Id is required" : ""
-      this.nameRequiredError = (!newItemName) ? "Item name is required" : ""
-      this.priceRequiredError = (!newItemPrice) ? "Item price is required" : ""
+      this.nameError = (!newItemName) ? "Item name is required" : ""
+      this.priceError = (!newItemPrice) ? "Item price is required" : ""
     }
   }
 

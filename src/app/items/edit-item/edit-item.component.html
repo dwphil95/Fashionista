@@ -3,10 +3,10 @@
     <h6>Item ID: {{itemId}}</h6><br>
     <div class="container">
         <form [formGroup]="editForm" (ngSubmit)="update()">
-            <label for="fname">Item Name:</label>
+            <label for="fname">Item Name:&nbsp;</label>
             <input type="text" formControlName="fname"/><br>
             <p>{{nameRequiredError}}</p><br>
-            <label for="price">Item Price:</label>
+            <label for="price">Item Price:&nbsp;</label>
             <input type="number" formControlName="price"/><br>
             <p>{{priceRequiredError}}</p><br>
             <button type="submit" class="btn btn-warning">Update Item</button>

@@ -2,15 +2,15 @@
     <br><h2 class>Add Fashion Item</h2><hr>
     <div class="container">
         <form [formGroup]="addForm" (ngSubmit)="addItem()">
-            <label for="id">ID:</label>
+            <label for="id">ID:&nbsp;</label>
             <input type="text" formControlName="id"/><br>
             <p>{{idError}}</p><br>
-            <label for="fname">Item Name:</label>
+            <label for="fname">Item Name:&nbsp;</label>
             <input type="text" formControlName="fname"/><br>
-            <p>{{nameRequiredError}}</p><br>
-            <label for="price">Item Price:</label>
+            <p>{{nameError}}</p><br>
+            <label for="price">Item Price:&nbsp;</label>
             <input type="number" formControlName="price"/><br>
-            <p>{{priceRequiredError}}</p><br>
+            <p>{{priceError}}</p><br>
             <button type="submit" class="btn btn-warning">Add Item</button>
         </form>
     </div>
